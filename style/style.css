@@ -1,0 +1,123 @@
+body { 
+    font-family: Arial,
+    sans-serif; 
+}
+header {
+    background: #004481;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+.container { 
+    width: 80%; 
+    margin: auto; 
+    background-color: #fff; 
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.logo { width: 150px; }
+
+.form-group { 
+    margin-bottom: 15px;
+    margin-right: 20px;
+}
+h4{ 
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    background-color: #004481;
+    color: #fff;
+}
+strong{
+    color: #004481;
+}
+
+.form-group h2 {
+    margin-bottom: 15px;
+  }
+.form-group span{
+    width: 60%;
+}
+  .radio-group { align-items: center; justify-content: space-between; }
+  .radio-group label { margin: 0; padding-right: 15px; }
+  .radio-group label input { margin-left: 5px; }
+  .radio-group input { width: auto; }
+
+  
+label { 
+    display: flex; 
+    margin-bottom: 5px; 
+}
+
+.input-text{
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 10px;
+}
+#conformidad{
+    height: 15px;
+    width: 250px;
+    
+}
+p{
+    padding-bottom: 30px;
+}
+textarea { 
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 10px; 
+}
+.checkbox-group  { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    margin: 10px;
+}
+
+.checkbox-group input { 
+    width: auto; 
+}
+#btn-descargar { 
+    display: block; 
+    width: 100%; 
+    padding: 10px; 
+    background-color: #004aad; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.firma{
+    display: inline-block;
+    margin-right: 20px;
+      
+}
+canvas {
+    border: 1px solid #000;
+    width: 100%;
+    height: 130px;
+  }
+#firma-group{
+    display: flex;
+    justify-content: space-between;
+}
+#btn-limpiar2, #btn-limpiar1{
+    margin-bottom: 15px;
+}
+#others{
+    width: 70%;
+}
+h2 {
+    color: #004481;
+    
+}
+
