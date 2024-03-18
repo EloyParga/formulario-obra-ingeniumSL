@@ -463,13 +463,13 @@ async function generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, ques
         pdf.setPage(4)
 
         //TextArea1
-        pdf.text(details1, 67,130)
+        pdf.text(details1, 67,133)
 
         //TextArea2
-        pdf.text(details2, 67,349.5)
+        pdf.text(details2, 67,353.5)
 
         //TextArea3
-        pdf.text(details3, 67,570.5)
+        pdf.text(details3, 67,574.5)
 
         //--- 
         pdf.setPage(5)
@@ -499,7 +499,7 @@ async function generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, ques
 
 
 
-        pdf.save("GeneratedDocument.pdf");
+        pdf.save(`parte_visita_${date}.pdf`);
     } else {
         throw new Error("signaturePad no está inicializado");
     }
