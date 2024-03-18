@@ -29,11 +29,7 @@ function getTextValue(id) {
     return element ? element.value : 'NULL';
 }
 
-// Función auxiliar para obtener el valor de los campos de radio y checkbox
-function getCheckedValue(query) {
-    const element = document.querySelector(query + ':checked');
-    return element ? element.value : '';
-}
+
 
 
 window.addEventListener('load', async () => {
@@ -83,7 +79,7 @@ window.addEventListener('load', async () => {
             e.preventDefault();
 
             let direccion =document.getElementById('direccion').value;
-            let vivienda = getTextValue('vivienda');
+            let vivienda = document.getElementById('vivienda').value;
         
             let tipoVivienda = document.querySelector('input[name="housingType"]:checked').value;
             let quest1 = document.querySelector('input[name="quest1"]:checked').value;
@@ -94,7 +90,7 @@ window.addEventListener('load', async () => {
             let quest6 = document.querySelector('input[name="quest6"]:checked').value
             let quest7 = document.querySelector('input[name="quest7"]:checked').value
             let quest8 = document.querySelector('input[name="quest8"]:checked').value
-            console.log(quest8)
+            
             let quest9 = document.querySelector('input[name="quest9"]:checked').value
             let quest10 = document.querySelector('input[name="quest10"]:checked').value
             let quest11 = document.querySelector('input[name="quest11"]:checked').value
@@ -118,30 +114,35 @@ window.addEventListener('load', async () => {
             let quest29 = document.querySelector('input[name="quest29"]:checked').value
             let quest30 = document.querySelector('input[name="quest30"]:checked').value
             
-            let other1 = getTextValue('others1').value;
-            let other2 = getTextValue('others2').value;
-            let other3 = getTextValue('others3').value;
+            let other1 =  document.getElementById('others1').value;
+            let other2 =  document.getElementById('others2').value;
+            let other3 =  document.getElementById('others3').value;
         
             let quest31 = document.querySelector('input[name="quest31"]:checked').value;
             let quest32 = document.querySelector('input[name="quest32"]:checked').value;
             let quest33 = document.querySelector('input[name="quest33"]:checked').value;
         
-            let details1 = getTextValue('visitDetails1').value;
-            let details2 = getTextValue('visitDetails2').value;
-            let details3 = getTextValue('visitDetails3').value;
+            let details1 =  document.getElementById('visitDetails1').value;
+            let details2 =  document.getElementById('visitDetails2').value;
+            let details3 =  document.getElementById('visitDetails3').value;
             
             let conformidad = document.querySelector('input[name="declaration"]:checked').value;
-        
-            let empresa1 = getTextValue('empresa1').value;
-            let dni1 = getTextValue('dni1').value;
-            let fdo1 = getTextValue('fdo1').value;
-            let empresa2 = getTextValue('empresa2').value;
-            let dni2 = getTextValue('dni2').value;
-            let fdo2 = getTextValue('fdo2').value;
+            let confName1 = document.getElementById('conformidadName').value
+            let confName2 = document.getElementById('disconformidadName').value
 
+        
+            let empresa1 =  document.getElementById('empresa1').value;
+            let dni1 =  document.getElementById('dni1').value;
+            let fdo1 =  document.getElementById('fdo1').value;
+            
+            let empresa2 =  document.getElementById('empresa2').value;
+            let dni2 =  document.getElementById('dni2').value;
+            let fdo2 =  document.getElementById('fdo2').value;
+
+            console.log(fdo1 + " --- " + fdo2)
             generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, quest3, quest4, quest5,quest6, quest7, quest8, quest9, quest10, quest11, quest12, quest13,
                 quest14, quest15, quest16, quest17, quest18, quest19, quest20, quest21, quest22, quest23, quest24, quest25, quest26, quest27, quest28, quest29,quest30,
-                quest31, quest32, quest33, other1, other2, other3, details1, details2, details3, conformidad, empresa1, empresa2, dni1, dni2, fdo1, fdo2).then(() => {
+                quest31, quest32, quest33, other1, other2, other3, details1, details2, details3, conformidad, confName1, confName2, empresa1, empresa2, dni1, dni2, fdo1, fdo2).then(() => {
                 console.log("PDF generado con éxito");
             }).catch((error) => {
                 console.error("Error al generar el PDF", error);
@@ -153,8 +154,9 @@ window.addEventListener('load', async () => {
 
 async function generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, quest3, quest4, quest5,quest6, quest7, quest8, quest9, quest10, quest11, quest12, quest13,
     quest14, quest15, quest16, quest17, quest18, quest19, quest20, quest21, quest22, quest23, quest24, quest25, quest26, quest27, quest28, quest29,quest30,
-    quest31, quest32, quest33, other1, other2, other3, details1, details2, details3, conformidad, empresa1, empresa2, dni1, dni2, fdo1, fdo2){
+    quest31, quest32, quest33, other1, other2, other3, details1, details2, details3, conformidad, confName1, confName2 , empresa1, empresa2, dni1, dni2, fdo1, fdo2){
 
+        console.log(fdo1 + " " + fdo2)
     // Asegúrate de que esta función sea llamada después de que signaturePad ha sido inicializada
     if (signaturePad) {
         const signatureImg1=signaturePad.toDataURL();
@@ -293,90 +295,209 @@ async function generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, ques
         pdf.setPage(2)
 
         ///Quest 13 -> CheckValue 
-        if(quest10 === "Si"){ pdf.circle(370 , 154.9, 4, 'FD')
+        if(quest13 === "Si"){ pdf.circle(370 , 154.9, 4, 'FD')
 
-        }else if(quest10 === "No"){ pdf.circle(420 , 154.9, 4, 'FD')
+        }else if(quest13 === "No"){ pdf.circle(420 , 154.9, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 154.9, 4, 'FD')}
 
         //Quest 14 -> CheckValue 
-        if(quest11 === "Si"){ pdf.circle(370 , 184.4, 4, 'FD')
+        if(quest14 === "Si"){ pdf.circle(370 , 184.4, 4, 'FD')
 
-        }else if(quest11 === "No"){ pdf.circle(420 , 184.4, 4, 'FD')
+        }else if(quest14 === "No"){ pdf.circle(420 , 184.4, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 184.4, 4, 'FD')}
 
         //Quest 15 -> CheckValue 
-        if(quest12 === "Si"){ pdf.circle(370 , 223.2, 'FD')
+        if(quest15 === "Si"){ pdf.circle(370 , 223.2, 'FD')
 
-        }else if(quest12 === "No"){ pdf.circle(420 , 223.2, 4, 'FD')
+        }else if(quest15 === "No"){ pdf.circle(420 , 223.2, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 223.2, 4, 'FD')}
 
         //------
         //Quest 16-> CheckValue 
-        if(quest8 === "Si"){ pdf.circle(370 , 341, 4, 'FD')
+        if(quest16 === "Si"){ pdf.circle(370 , 341, 4, 'FD')
 
-        }else if(quest8 === "No"){ pdf.circle(420 , 341, 4, 'FD')
+        }else if(quest16 === "No"){ pdf.circle(420 , 341, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 341, 4, 'FD')}
 
         //Quest 17 -> CheckValue 
-        if(quest9 === "Si"){ pdf.circle(370 , 371, 4, 'FD')
+        if(quest17 === "Si"){ pdf.circle(370 , 371, 4, 'FD')
 
-        }else if(quest9 === "No"){ pdf.circle(420 , 371, 4, 'FD')
+        }else if(quest17 === "No"){ pdf.circle(420 , 371, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 371, 4, 'FD')}
 
         //Quest 18 -> CheckValue 
-        if(quest10 === "Si"){ pdf.circle(370 , 402, 4, 'FD')
+        if(quest18 === "Si"){ pdf.circle(370 , 402, 4, 'FD')
 
-        }else if(quest10 === "No"){ pdf.circle(420 , 402, 4, 'FD')
+        }else if(quest18 === "No"){ pdf.circle(420 , 402, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 402, 4, 'FD')}
 
         //Quest 19 -> CheckValue 
-        if(quest11 === "Si"){ pdf.circle(370 , 439.2, 'FD')
+        if(quest19 === "Si"){ pdf.circle(370 , 439.2, 'FD')
 
-        }else if(quest11 === "No"){ pdf.circle(420 , 439.2, 4, 'FD')
+        }else if(quest19 === "No"){ pdf.circle(420 , 439.2, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 439.2, 4, 'FD')}
 
         //Quest 20 -> CheckValue 
-        if(quest12 === "Si"){ pdf.circle(370 , 487.2, 4, 'FD')
+        if(quest20 === "Si"){ pdf.circle(370 , 487.2, 4, 'FD')
 
-        }else if(quest12 === "No"){ pdf.circle(420 , 487.2, 4, 'FD')
+        }else if(quest20 === "No"){ pdf.circle(420 , 487.2, 4, 'FD')
 
         }else{ pdf.circle(475.8 , 487.2, 4, 'FD')}
 
         //-----
         //Quest 21 -> CheckValue 
-        if(quest10 === "Si"){ pdf.circle(367.2 , 616, 'FD')
+        if(quest21 === "Si"){ pdf.circle(367.2 , 616, 'FD')
 
-        }else if(quest10 === "No"){ pdf.circle(417.5 , 616, 4, 'FD')
+        }else if(quest21 === "No"){ pdf.circle(417.5 , 616, 4, 'FD')
 
         }else{ pdf.circle(473 , 616, 4, 'FD')}
 
         //Quest 22 -> CheckValue 
-        if(quest11 === "Si"){ pdf.circle(368.5 , 649, 'FD')
+        if(quest22 === "Si"){ pdf.circle(368.5 , 649, 'FD')
 
-        }else if(quest11 === "No"){ pdf.circle(418.6 , 649, 4, 'FD')
+        }else if(quest22 === "No"){ pdf.circle(418.6 , 649, 4, 'FD')
 
         }else{ pdf.circle(474.5 , 649, 4, 'FD')}
 
         //Quest 23 -> CheckValue 
-        if(quest12 === "Si"){ pdf.circle(367.2 , 674.2, 4, 'FD')
+        if(quest23 === "Si"){ pdf.circle(367.2 , 674.2, 4, 'FD')
 
-        }else if(quest12 === "No"){ pdf.circle(417.5 , 674.2, 4, 'FD')
+        }else if(quest23 === "No"){ pdf.circle(417.5 , 674.2, 4, 'FD')
 
         }else{ pdf.circle(473 , 674.2, 4, 'FD')}
 
         //Quest 24 -> CheckValue 
-        if(quest12 === "Si"){ pdf.circle(368.5 , 697.3, 4, 'FD')
+        if(quest24 === "Si"){ pdf.circle(368.5 , 697.3, 4, 'FD')
 
-        }else if(quest12 === "No"){ pdf.circle(418.6 , 697.3, 4, 'FD')
+        }else if(quest24 === "No"){ pdf.circle(418.6 , 697.3, 4, 'FD')
 
         }else{ pdf.circle(474.5 , 697.3, 4, 'FD')}
+
+        //-----
+        pdf.setPage(3)
+
+        //Quest 25 -> CheckValue 
+        if(quest25 === "Si"){ pdf.circle(370 , 118, 4, 'FD')
+
+        }else if(quest25 === "No"){ pdf.circle(420 , 118, 4, 'FD')
+
+        }else{ pdf.circle(475.5 , 118, 4, 'FD')}
+
+        //Quest 26 -> CheckValue 
+        if(quest26 === "Si"){ pdf.circle(370 , 165.5, 4, 'FD')
+
+        }else if(quest26 === "No"){ pdf.circle(420 , 165.5, 4, 'FD')
+
+        }else{ pdf.circle(475.5 , 165.5, 4, 'FD')}
+
+        //-------
+        //Quest 27 -> CheckValue 
+        if(quest27 === "Si"){ pdf.circle(370 , 262, 4, 'FD')
+
+        }else if(quest27 === "No"){ pdf.circle(420 , 262, 4, 'FD')
+
+        }else{ pdf.circle(475.5, 262, 4, 'FD')}
+
+        //Quest 28 -> CheckValue 
+        if(quest28 === "Si"){ pdf.circle(370 , 309.5, 4, 'FD')
+
+        }else if(quest28 === "No"){ pdf.circle(420 , 309.5, 4, 'FD')
+
+        }else{ pdf.circle(475.5 , 309.5, 4, 'FD')}
+
+        //-----
+        //Quest 29 -> CheckValue 
+        if(quest29 === "Si"){ pdf.circle(370.2 , 405, 4, 'FD')
+
+        }else if(quest29 === "No"){ pdf.circle(421 , 405, 4, 'FD')
+
+        }else{ pdf.circle(477 , 405, 4, 'FD')}
+
+        //-------
+        //Quest 30 -> CheckValue 
+        if(quest30 === "Si"){ pdf.circle(372.2 , 510, 4, 'FD')
+
+        }else if(quest30 === "No"){ pdf.circle(422.3 , 510, 4, 'FD')
+
+        }else{ pdf.circle(477.9 , 510, 4, 'FD')}
+
+        //--------
+        //Quest 31 -> CheckValue 
+        if(quest31 === "Si"){ pdf.circle(373 , 614.7, 4, 'FD')
+
+        }else if(quest31 === "No"){ pdf.circle(423.5 , 614.7, 4, 'FD')
+
+        }else{ pdf.circle(479.2 , 614.7, 4, 'FD')}
+
+        //Quest 32  -> CheckValue 
+        if(quest32 === "Si"){ pdf.circle(373 , 654, 4, 'FD')
+
+        }else if(quest32 === "No"){ pdf.circle(423.5 , 654, 4, 'FD')
+
+        }else{ pdf.circle(479.2 , 654, 4, 'FD')}
+
+        //Quest 33 -> CheckValue 
+        if(quest33 === "Si"){ pdf.circle(373 , 694.7, 4, 'FD')
+
+        }else if(quest33 === "No"){ pdf.circle(423.5 , 694.7, 4, 'FD')
+
+        }else{ pdf.circle(479.2 , 694.7, 4, 'FD')}
+
+        //Others 1 
+        pdf.text(other1, 66,619)
+
+        //Others 2 
+        pdf.text(other2, 66,660)
+
+        //Others 3 
+        pdf.text(other3, 66,699)
+
+        //-------
+        pdf.setPage(4)
+
+        //TextArea1
+        pdf.text(details1, 67,130)
+
+        //TextArea2
+        pdf.text(details2, 67,349.5)
+
+        //TextArea3
+        pdf.text(details3, 67,570.5)
+
+        //--- 
+        pdf.setPage(5)
+        
+        //Conformidad
+        if(conformidad === "conform"){ pdf.circle(64.5 , 117.7, 4, 'FD')
+        }else{ pdf.circle(64.5 , 215, 4, 'FD')}
+
+        //D./DÑA 
+        pdf.text( confName1, 114, 151)
+        pdf.text( confName2, 114, 248)
+
+        //Empresa
+        pdf.text( empresa1, 130.5, 357.9)
+        pdf.text( empresa2, 383.2, 357.9)
+
+        //DNI
+        pdf.text( dni1, 130.5, 404.2)
+        pdf.text( dni2, 383.2, 404.2)
+
+        //FDO
+        console.log(fdo1)
+        pdf.text( fdo1, 130.5, 593.7)
+        pdf.text( fdo2, 383.2, 593.7)
+    
+
+
+
 
         pdf.save("GeneratedDocument.pdf");
     } else {
