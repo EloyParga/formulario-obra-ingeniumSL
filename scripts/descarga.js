@@ -1,3 +1,5 @@
+
+
 // Asegúrate de que esta parte se ejecute después de inicializar signaturePad y signaturePad2
 let signaturePad = null;
 let signaturePad2 = null;
@@ -23,10 +25,18 @@ function loadImage(url){
     })
 }
 
-// Función auxiliar para obtener el valor de los campos de texto
-function getTextValue(id) {
-    const element = document.getElementById(id);
-    return element ? element.value : 'NULL';
+function agregarTextoAjustado(pdf, texto, x, y, anchoMaximo, alturaLinea) {
+    // Divide el texto por saltos de línea para respetar los párrafos
+    const parrafos = texto.split('\n');
+    parrafos.forEach(parrafo => {
+        let lines = pdf.splitTextToSize(parrafo, anchoMaximo);
+        lines.forEach((line) => {
+            pdf.text(line, x, y);
+            y += alturaLinea;
+        });
+        // Añade un espacio extra entre párrafos si es necesario
+        y += alturaLinea;
+    });
 }
 
 
@@ -139,7 +149,6 @@ window.addEventListener('load', async () => {
             let dni2 =  document.getElementById('dni2').value;
             let fdo2 =  document.getElementById('fdo2').value;
 
-            console.log(fdo1 + " --- " + fdo2)
             generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, quest3, quest4, quest5,quest6, quest7, quest8, quest9, quest10, quest11, quest12, quest13,
                 quest14, quest15, quest16, quest17, quest18, quest19, quest20, quest21, quest22, quest23, quest24, quest25, quest26, quest27, quest28, quest29,quest30,
                 quest31, quest32, quest33, other1, other2, other3, details1, details2, details3, conformidad, confName1, confName2, empresa1, empresa2, dni1, dni2, fdo1, fdo2).then(() => {
@@ -156,7 +165,7 @@ async function generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, ques
     quest14, quest15, quest16, quest17, quest18, quest19, quest20, quest21, quest22, quest23, quest24, quest25, quest26, quest27, quest28, quest29,quest30,
     quest31, quest32, quest33, other1, other2, other3, details1, details2, details3, conformidad, confName1, confName2 , empresa1, empresa2, dni1, dni2, fdo1, fdo2){
 
-        console.log(fdo1 + " " + fdo2)
+    
     // Asegúrate de que esta función sea llamada después de que signaturePad ha sido inicializada
     if (signaturePad) {
         const signatureImg1=signaturePad.toDataURL();
@@ -463,15 +472,15 @@ async function generatePDF(direccion,vivienda, tipoVivienda,quest1, quest2, ques
         pdf.setPage(4)
 
         //TextArea1
-        pdf.text(details1, 67,133)
+        agregarTextoAjustado(pdf, details1, 67, 133, 450, 15)
 
         //TextArea2
-        pdf.text(details2, 67,353.5)
+        agregarTextoAjustado(pdf, details2, 67, 353.5, 450, 15)
 
         //TextArea3
-        pdf.text(details3, 67,574.5)
+        agregarTextoAjustado(pdf, details3, 67, 574.5, 450, 15)
 
-        //--- 
+        //---
         pdf.setPage(5)
         
         //Conformidad
