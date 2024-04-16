@@ -93,7 +93,7 @@ window.addEventListener('load', async () => {
             
             let tipoViviendaElement = document.querySelector('input[name="housingType"]:checked');
             let tipoVivienda = tipoViviendaElement ? tipoViviendaElement.value : ''
-            let quest1 = document.querySelector('input[name="quest1"]:checked').value;
+            let quest1 = document.querySelector('input[name="quest1"]:checked').value
             let quest2 = document.querySelector('input[name="quest2"]:checked').value
             let quest3 = document.querySelector('input[name="quest3"]:checked').value
             let quest4 = document.querySelector('input[name="quest4"]:checked').value
@@ -109,6 +109,7 @@ window.addEventListener('load', async () => {
             let quest13 = document.querySelector('input[name="quest13"]:checked').value
             let quest14 = document.querySelector('input[name="quest14"]:checked').value
             let quest15 = document.querySelector('input[name="quest15"]:checked').value
+            console.log(quest15)
             let quest16 = document.querySelector('input[name="quest16"]:checked').value
             let quest17 = document.querySelector('input[name="quest17"]:checked').value
             let quest18 = document.querySelector('input[name="quest18"]:checked').value
@@ -335,8 +336,10 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
 
         }else{ pdf.circle(475.8 , 184.4, 4, 'FD')}
 
+        console.log(quest15);
+
         //Quest 15 -> CheckValue 
-        if(quest15 === "Si"){ pdf.circle(370 , 223.2, 'FD')
+        if(quest15 === "Si"){ pdf.circle(370 , 223.2, 4, 'FD')
 
         }else if(quest15 === "No"){ pdf.circle(420 , 223.2, 4, 'FD')
 
@@ -365,7 +368,7 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
         }else{ pdf.circle(475.8 , 402, 4, 'FD')}
 
         //Quest 19 -> CheckValue 
-        if(quest19 === "Si"){ pdf.circle(370 , 439.2, 'FD')
+        if(quest19 === "Si"){ pdf.circle(370 , 439.2, 4, 'FD')
 
         }else if(quest19 === "No"){ pdf.circle(420 , 439.2, 4, 'FD')
 
@@ -380,14 +383,14 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
 
         //-----
         //Quest 21 -> CheckValue 
-        if(quest21 === "Si"){ pdf.circle(367.2 , 616, 'FD')
+        if(quest21 === "Si"){ pdf.circle(367.2 , 616, 4, 'FD')
 
         }else if(quest21 === "No"){ pdf.circle(417.5 , 616, 4, 'FD')
 
         }else{ pdf.circle(473 , 616, 4, 'FD')}
 
         //Quest 22 -> CheckValue 
-        if(quest22 === "Si"){ pdf.circle(368.5 , 649, 'FD')
+        if(quest22 === "Si"){ pdf.circle(368.5 , 649, 4, 'FD')
 
         }else if(quest22 === "No"){ pdf.circle(418.6 , 649, 4, 'FD')
 
