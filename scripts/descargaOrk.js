@@ -192,11 +192,11 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
         
         
         
-        const img1 = await loadImage("/img/canvaIng/1.png");
-        const img2 = await loadImage("/img/canvaIng/2.png");
-        const img3 = await loadImage("/img/canvaIng/3.png");
-        const img4 = await loadImage("/img/canvaIng/4.png");
-        const img5 = await loadImage("/img/canvaIng/5.png");
+        const img1 = await loadImage("/img/canvaOrkli/1.png");
+        const img2 = await loadImage("/img/canvaOrkli/2.png");
+        const img3 = await loadImage("/img/canvaOrkli/3.png");
+        const img4 = await loadImage("/img/canvaOrkli/4.png");
+        const img5 = await loadImage("/img/canvaOrkli/5.png");
 
         const pdf = new jsPDF('p', 'pt', 'a4');
 
@@ -219,7 +219,10 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
 
         
         const date = new Date().toLocaleDateString('es-ES')
+        pdf.setTextColor(255, 255, 255);
         pdf.text(date, 425, 25)
+
+        pdf.setTextColor(0, 0, 0);
         pdf.text(promo, 227, 71)
         pdf.text(direccion, 130,105)
         pdf.text(vivienda, 383,105)
@@ -228,7 +231,9 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
         pdf.setFillColor(0,0,0)
 
         //Tipo Vivienda -> CheckValue
-        if(tipoVivienda === "Asesoramiento"){ pdf.circle(368 , 154.5, 4, 'FD')
+        if(tipoVivienda === "Formación"){ pdf.circle(210.5 , 154.5, 4, 'FD')
+
+        }else if(tipoVivienda === "PILOTO"){ pdf.circle(355.5 , 154.5, 4, 'FD')
 
         }else{ pdf.circle(501, 154.5, 4, 'FD')}
 
@@ -521,7 +526,7 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
         pdf.text( fdo1, 130.5, 593.7)
         pdf.text( fdo2, 383.2, 593.7)
     
-        pdf.save(`PV_${vivienda}_${date}.pdf`);
+        pdf.save(`PV_Ork_${vivienda}_${date}.pdf`);
     } else {
         throw new Error("signaturePad no está inicializado");
     }
