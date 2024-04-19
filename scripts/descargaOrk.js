@@ -231,7 +231,7 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
         pdf.setFillColor(0,0,0)
 
         //Tipo Vivienda -> CheckValue
-        if(tipoVivienda === "Formación"){ pdf.circle(210.5 , 154.5, 4, 'FD')
+        if(tipoVivienda === "Formación"){ pdf.circle(215.5 , 154.5, 4, 'FD')
 
         }else if(tipoVivienda === "PILOTO"){ pdf.circle(355.5 , 154.5, 4, 'FD')
 
