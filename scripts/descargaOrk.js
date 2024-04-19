@@ -187,32 +187,32 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,quest1, quest2
     
     // Asegúrate de que esta función sea llamada después de que signaturePad ha sido inicializada
     if (signaturePad) {
-        const signatureImg1=signaturePad.toDataURL();
-        const signatureImg2=signaturePad2.toDataURL(); // Usa signaturePad aquí sin problema
+        const signatureImg1=signaturePad.toDataURL('image/jpg');
+        const signatureImg2=signaturePad2.toDataURL('image/jpg'); // Usa signaturePad aquí sin problema
         
         
         
-        const img1 = await loadImage("/img/canvaOrkli/1.png");
-        const img2 = await loadImage("/img/canvaOrkli/2.png");
-        const img3 = await loadImage("/img/canvaOrkli/3.png");
-        const img4 = await loadImage("/img/canvaOrkli/4.png");
-        const img5 = await loadImage("/img/canvaOrkli/5.png");
+        const img1 = await loadImage("/img/canvaOrkli/1.jpg");
+        const img2 = await loadImage("/img/canvaOrkli/2.jpg");
+        const img3 = await loadImage("/img/canvaOrkli/3.jpg");
+        const img4 = await loadImage("/img/canvaOrkli/4.jpg");
+        const img5 = await loadImage("/img/canvaOrkli/5.jpg");
 
         const pdf = new jsPDF('p', 'pt', 'a4');
 
-        pdf.addImage(img1, 'PNG', 0, 0, 595, 842);
+        pdf.addImage(img1, 'JPG', 0, 0, 595, 842);
        
         
         // Añadir nuevas páginas para las imágenes adicionales
         const images = [img2, img3, img4, img5];
         images.forEach(image => {
             pdf.addPage();
-            pdf.addImage(image, 'PNG', 0, 0, 595, 842);
+            pdf.addImage(image, 'JPG', 0, 0, 595, 842);
         });
         //Setear la pagina 5 
         pdf.setPage(5);
-        pdf.addImage(signatureImg1, 'PNG', 70, 458, 200, 85)
-        pdf.addImage(signatureImg2, 'PNG', 323, 458, 200, 85)
+        pdf.addImage(signatureImg1, 'JPG', 70, 458, 200, 85)
+        pdf.addImage(signatureImg2, 'JPG', 323, 458, 200, 85)
 
         pdf.setPage(1);
         pdf.setFontSize(12)
