@@ -93,6 +93,7 @@ window.addEventListener('load', async () => {
             
             let tipoViviendaElement = document.querySelector('input[name="housingType"]:checked');
             let tipoVivienda = tipoViviendaElement ? tipoViviendaElement.value : ''
+            
             let quest1 = document.querySelector('input[name="quest1"]:checked').value;
             let quest2 = document.querySelector('input[name="quest2"]:checked').value
             let quest3 = document.querySelector('input[name="quest3"]:checked').value
@@ -101,7 +102,6 @@ window.addEventListener('load', async () => {
             let quest6 = document.querySelector('input[name="quest6"]:checked').value
             let quest7 = document.querySelector('input[name="quest7"]:checked').value
             let quest8 = document.querySelector('input[name="quest8"]:checked').value
-            
             let quest9 = document.querySelector('input[name="quest9"]:checked').value
             let quest10 = document.querySelector('input[name="quest10"]:checked').value
             let quest11 = document.querySelector('input[name="quest11"]:checked').value
