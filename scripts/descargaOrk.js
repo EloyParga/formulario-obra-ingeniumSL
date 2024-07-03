@@ -321,7 +321,7 @@ async function generatePDF(promo,direccion,vivienda, tipoVivienda,
 
 
         // COMPROBACIÓN DEL CABLEADO
-        //Quest 1 -> CheckValue 
+        //Quest 1 -> CheckValue
         if(quest1 === "Si"){ pdf.circle(339, 248.5, 4, 'FD')
 
         }else if(quest1 === "No"){ pdf.circle(386 , 248.5, 4, 'FD')
